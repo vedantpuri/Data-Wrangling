@@ -51,8 +51,7 @@ def all_caps_tweets(tweets):
 
 
 def count_individual_words(tweets):
-    words = flatten(list(map(lambda x: x["content"].split(), tweets)))
-    return reduce(lambda x, y: dict(x, **y), list(map(lambda x: {x: words.count(x)}, words)))
+    return reduce(lambda x, y: dict(x, **y), list(map(lambda x: {x: flatten(list(map(lambda x: x["content"].split(), tweets))).count(x)}, flatten(list(map(lambda x: x["content"].split(), tweets))))))
 
 
 def count_individual_hashtags(tweets):
